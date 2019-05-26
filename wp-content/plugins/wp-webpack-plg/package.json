@@ -3,9 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
+  "scripts": {
+    "watch": "webpack --mode=development --watch --config webpack-config.js",
+    "build": "webpack --mode=production --config webpack-config.js"
+  },
+  "keywords": [
+    "wordpress",
+    "webpack",
+    "javascript"
+  ],
   "author": "Bozlur Rahman",
   "license": "ISC",
   "devDependencies": {
