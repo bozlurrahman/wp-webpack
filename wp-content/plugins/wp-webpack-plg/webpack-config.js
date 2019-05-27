@@ -1,5 +1,6 @@
 // Require path.
-const path = require( 'path' );
+const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // Configuration object.
 const config = {
@@ -17,7 +18,7 @@ const config = {
 		// [name] allows for the entry object keys to be used as file names.
 		filename: 'js/[name].js',
 		// Specify the path to the JS files.
-		path: path.resolve( __dirname, 'assets' )
+		path: path.resolve(__dirname, 'assets')
 	},
 
 	// Setup a loader to transpile down the latest and great JavaScript so older browsers
@@ -30,8 +31,22 @@ const config = {
 				// Exclude the node_modules folder.
 				exclude: /node_modules/,
 				// Use babel loader to transpile the JS files.
-				loader: 'babel-loader'
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ['babel-preset-env']
+					}
+				}
 			}
+		]
+	},
+	optimization: {
+		minimizer: [
+			// enable the js minification plugin
+			new UglifyJSPlugin({
+				cache: true,
+				parallel: true
+			})
 		]
 	}
 }
