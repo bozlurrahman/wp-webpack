@@ -83,3 +83,4 @@ wp-content/plugins/wp-webpack-plg/assets/
 !wp-content/plugins/webpack-styles/
 wp-content/plugins/webpack-styles/package-lock.json
 wp-content/plugins/webpack-styles/assets/
+wp-content/plugins/webpack-styles/*/build/*
