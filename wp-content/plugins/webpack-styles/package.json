@@ -1,0 +1,26 @@
+{
+  "name": "wp-webpack-styles-integration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development --config webpack-config.js",
+    "dist": "webpack --mode production --config webpack-config.js",
+    "watch": "webpack --mode=development --watch --config webpack-config.js"
+  },
+  "keywords": [
+    "wordpress",
+    "webpack",
+    "javascript"
+  ],
+  "author": "Bozlur Rahman",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  }
+}
