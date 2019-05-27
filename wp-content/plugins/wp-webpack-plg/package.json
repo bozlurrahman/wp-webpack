@@ -9,8 +9,9 @@
     ]
   },
   "scripts": {
-    "watch": "webpack --mode=development --watch --config webpack-config.js",
-    "build": "webpack --mode=production --config webpack-config.js"
+    "build": "webpack --mode=development --config webpack-config.js",
+    "dist": "webpack --mode production --config webpack-config.js",
+    "watch": "webpack --mode=development --watch --config webpack-config.js"
   },
   "keywords": [
     "wordpress",
