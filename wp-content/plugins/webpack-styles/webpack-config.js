@@ -36,31 +36,12 @@ module.exports = {
                 }
             },
             // compile all .scss files to plain old css
-            // {
-            //     test: /\.(sass|scss)$/,
-            //     use: [
-            //         MiniCssExtractPlugin.loader, 
-            //         'css-loader', 
-            //         'sass-loader'
-            //     ]
-            // }
             {
-                test: /\.s?css$/,
+                test: /\.(c|sc|sa)ss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            // sourceMap: true,
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            // sourceMap: true,
-                            importer: glob.sync("./css/src/*.scss"),
-                        },
-                    },
+                    MiniCssExtractPlugin.loader, 
+                    'css-loader', 
+                    'sass-loader'
                 ]
             }
         ]
@@ -68,7 +49,8 @@ module.exports = {
     plugins: [
         // extract css into dedicated file
         new MiniCssExtractPlugin({
-            filename: './css/build/[name].css'
+            filename: './css/build/[name].css',
+            chunkFilename: "./css/build/[id].css"
         })
     ],
     optimization: {
