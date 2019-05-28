@@ -21,6 +21,7 @@ module.exports = {
         filename: './js/build/[name].js',
         path: path.resolve(__dirname)
     },
+    devtool: 'source-map',
     module: {
         rules: [
             // perform js babelization on all .js files
@@ -50,13 +51,13 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true,
+                            // sourceMap: true,
                         },
                     },
                     {
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: true,
+                            // sourceMap: true,
                             importer: glob.sync("./css/src/*.scss"),
                         },
                     },
