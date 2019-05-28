@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=development --config webpack-config.js",
+    "build": "webpack --mode=development --config webpack-config.js --display-error-details",
     "dist": "webpack --mode production --config webpack-config.js",
     "watch": "webpack --mode=development --watch --config webpack-config.js"
   },

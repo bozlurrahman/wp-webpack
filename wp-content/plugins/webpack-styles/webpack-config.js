@@ -7,10 +7,18 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
+var glob = require("glob");
+
+
 module.exports = {
-    entry: ['./js/src/app.js', './css/src/app.scss'],
+    // entry: ['./js/src/app.js', './css/src/app.scss'],
+    // entry: glob.sync("./js/src/*.js"),
+    entry: {
+    	scripts: glob.sync("./js/src/*.js"),
+    	styles: glob.sync("./css/src/*.scss")
+    },
     output: {
-        filename: './js/build/app.js',
+        filename: './js/build/[name].js',
         path: path.resolve(__dirname)
     },
     module: {
@@ -27,16 +35,39 @@ module.exports = {
                 }
             },
             // compile all .scss files to plain old css
+            // {
+            //     test: /\.(sass|scss)$/,
+            //     use: [
+            //         MiniCssExtractPlugin.loader, 
+            //         'css-loader', 
+            //         'sass-loader'
+            //     ]
+            // }
             {
-                test: /\.(sass|scss)$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+                test: /\.s?css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                            importer: glob.sync("./css/src/*.scss"),
+                        },
+                    },
+                ]
             }
         ]
     },
     plugins: [
         // extract css into dedicated file
         new MiniCssExtractPlugin({
-            filename: './css/build/main.min.css'
+            filename: './css/build/[name].css'
         })
     ],
     optimization: {
